@@ -1,0 +1,17 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--default-layout-width);
+    background-color: #333;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+}
