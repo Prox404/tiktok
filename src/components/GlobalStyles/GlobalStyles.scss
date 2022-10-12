@@ -87,6 +87,19 @@ body {
     font-size: 1.6rem;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+    color: var(--tux-colorTextPrimary);
+}
+
+button,
+input,
+[tabindex] {
+    outline: none;
+    border: none;
+}
+
+a[href] {
+    color: var(--tux-colorTextPrimary);
+    text-decoration: none;
 }
 
 // .h1,
