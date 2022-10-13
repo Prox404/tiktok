@@ -129,3 +129,16 @@
         background-color: rgba(22, 24, 35, 0.06);
     }
 }
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.more-btn {
+    display: flex;
+    font-size: 2rem;
+    margin-left: 16px;
+    background-color: transparent;
+}

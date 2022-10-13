@@ -7,7 +7,7 @@ function SearchItem(...props) {
     return (
         <div className={cx('wrapper')}>
             <BiSearch className={cx('search')} />
-            <p className={cx('results')}>
+            <p className={cx('result')}>
                 {props[0].result}
             </p>
         </div>
