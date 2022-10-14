@@ -6,10 +6,14 @@
     --search-button-width: 52px;
 
     height: var(--default-layout-header-height);
+    background: var(--white);
     width: 100%;
     box-shadow: 0 1px 1px rgba(0 0 0 / 12%);
     display: flex;
     justify-content: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 .content {
@@ -20,6 +24,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-right: 24px;
+    padding-left: 20px;
 }
 
 .search {
