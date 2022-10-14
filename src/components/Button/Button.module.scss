@@ -25,6 +25,7 @@
 .icon + .title,
 .title + .icon {
     margin-left: 8px;
+    display: flex;
     line-height: 1rem;
 }
 
@@ -52,11 +53,19 @@
 }
 
 .outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--black);
     border-color: rgba(22, 24, 35, 0.12);
 
     &:hover {
         background-color: rgba(254, 44, 85, 0.06);
+    }
+
+    svg {
+        display: flex;
+        font-size: 19px;
     }
 }
 
@@ -87,4 +96,8 @@
 .large {
     padding: 14px 16px;
     min-width: 140px;
+}
+
+.w100 {
+    width: 100%;
 }

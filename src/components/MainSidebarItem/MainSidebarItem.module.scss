@@ -1,0 +1,49 @@
+.main-bar-link {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    -webkit-transition: background ease-in-out 200ms;
+    transition: background ease-in-out 200ms;
+    color: var(--tux-colorTextPrimary);
+    line-height: normal;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+.main-bar-icon {
+    svg {
+        fill: var(--tux-colorTextPrimary);
+    }
+}
+
+.active {
+    h2 {
+        color: var(--tux-colorPrimary);
+    }
+    svg {
+        fill: var(--tux-colorPrimary);
+    }
+}
+
+.main-bar-text {
+    color: var(--tux-colorTextPrimary);
+    font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    margin-left: 8px;
+}
