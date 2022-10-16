@@ -27,6 +27,9 @@
     margin-left: 8px;
     display: flex;
     line-height: 1rem;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
 }
 
 // Button types
@@ -56,8 +59,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--black);
-    border-color: rgba(22, 24, 35, 0.12);
+    color: var(--tux-colorTextPrimary);
+    background: var(--tux-colorBGSecondary2);
+    border-color: var(--tux-colorLineDarker);
 
     &:hover {
         background-color: rgba(254, 44, 85, 0.06);
@@ -72,6 +76,7 @@
 .primaryOutline {
     color: var(--primary);
     border-color: var(--primary);
+    background: var(--tux-colorBGSecondary2);
 
     &:hover {
         border-color: currentColor;

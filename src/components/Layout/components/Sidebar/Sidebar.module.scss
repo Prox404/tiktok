@@ -9,7 +9,6 @@
     top: 60px;
     bottom: 0;
     width: 356px;
-    background: rgba(255, 255, 255, 1);
     position: fixed;
     z-index: 99;
     padding: 20px 0 26px 8px;
@@ -28,7 +27,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background: rgba(22, 24, 35, 0.06);
+        background: var(--tux-scrollbar);
     }
 }
 
@@ -48,7 +47,7 @@
         height: 1px;
         left: 8px;
         right: 8px;
-        background: rgba(22, 24, 35, 0.12);
+        background: var(--tux-colorLineSecondary);
         -webkit-transform: scaleY(0.5);
         -moz-transform: scaleY(0.5);
         -ms-transform: scaleY(0.5);
@@ -58,7 +57,7 @@
 }
 
 .login-hint {
-    color: rgba(22, 24, 35, 0.5);
+    color: var(--tux-colorTextTertiary);
     font-size: 16px;
     line-height: 22px;
 }
@@ -83,7 +82,7 @@
 }
 
 .p-title {
-    color: rgba(22, 24, 35, 0.75);
+    color: var(--tux-colorTextSecondary);
     font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
     font-weight: 600;
     font-size: 14px;
@@ -105,7 +104,7 @@
         height: 1px;
         left: 8px;
         right: 8px;
-        background: rgba(22, 24, 35, 0.12);
+        background: var(--tux-colorLineSecondary);
         -webkit-transform: scaleY(0.5);
         -moz-transform: scaleY(0.5);
         -ms-transform: scaleY(0.5);
@@ -134,7 +133,7 @@
         height: 1px;
         left: 8px;
         right: 8px;
-        background: rgba(22, 24, 35, 0.12);
+        background: var(--tux-colorLineSecondary);
         -webkit-transform: scaleY(0.5);
         -moz-transform: scaleY(0.5);
         -ms-transform: scaleY(0.5);
@@ -161,7 +160,7 @@
         height: 1px;
         left: 8px;
         right: 8px;
-        background: rgba(22, 24, 35, 0.12);
+        background: var(--tux-colorLineSecondary);
         -webkit-transform: scaleY(0.5);
         -moz-transform: scaleY(0.5);
         -ms-transform: scaleY(0.5);
@@ -175,7 +174,7 @@
 }
 
 .link-container .styled-nav-link {
-    color: rgba(22, 24, 35, 0.5);
+    color: var(--tux-colorTextTertiary);
     font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
     font-weight: 600;
     font-size: 12px;
@@ -190,7 +189,7 @@
 }
 
 .span-more-text {
-    color: rgba(22, 24, 35, 0.5);
+    color: var(--tux-colorTextTertiary);
     font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
     font-weight: 600;
     font-size: 12px;
@@ -202,7 +201,7 @@
 }
 
 .coppyright {
-    color: rgba(22, 24, 35, 0.5);
+    color: var(--tux-colorTextTertiary);
     font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
     font-weight: 600;
     font-size: 12px;

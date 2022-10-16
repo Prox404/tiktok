@@ -11,17 +11,21 @@ const cx = classNames.bind(styles);
 
 const defaultFn = () => { };
 
+
+
 function Menu({ children, items = [], onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     const renderItems = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
+            const isTheme = !!item.theme;
 
             return (
                 <MenuItem
                     key={index}
                     data={item}
+                    onThemeChange={isTheme}
                     onClick={() => {
                         if (isParent) {
                             setHistory((prev) => [...prev, item.children]);

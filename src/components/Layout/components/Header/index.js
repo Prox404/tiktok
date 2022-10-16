@@ -48,6 +48,12 @@ const MENU_ITEMS = [
         icon: <svg width="1em" height="1em" className={cx('left-icon')} viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M6 24C6 14.0589 14.0589 6 24 6C33.9411 6 42 14.0589 42 24C42 33.9411 33.9411 42 24 42C14.0589 42 6 33.9411 6 24ZM24 2C11.8497 2 2 11.8497 2 24C2 36.1503 11.8497 46 24 46C36.1503 46 46 36.1503 46 24C46 11.8497 36.1503 2 24 2ZM15 14C14.4477 14 14 14.4477 14 15V17C14 17.5523 14.4477 18 15 18H17C17.5523 18 18 17.5523 18 17V15C18 14.4477 17.5523 14 17 14H15ZM14 31C14 30.4477 14.4477 30 15 30H33C33.5523 30 34 30.4477 34 31V33C34 33.5523 33.5523 34 33 34H15C14.4477 34 14 33.5523 14 33V31ZM15 22C14.4477 22 14 22.4477 14 23V25C14 25.5523 14.4477 26 15 26H17C17.5523 26 18 25.5523 18 25V23C18 22.4477 17.5523 22 17 22H15ZM22 15C22 14.4477 22.4477 14 23 14H25C25.5523 14 26 14.4477 26 15V17C26 17.5523 25.5523 18 25 18H23C22.4477 18 22 17.5523 22 17V15ZM23 22C22.4477 22 22 22.4477 22 23V25C22 25.5523 22.4477 26 23 26H25C25.5523 26 26 25.5523 26 25V23C26 22.4477 25.5523 22 25 22H23ZM30 15C30 14.4477 30.4477 14 31 14H33C33.5523 14 34 14.4477 34 15V17C34 17.5523 33.5523 18 33 18H31C30.4477 18 30 17.5523 30 17V15ZM31 22C30.4477 22 30 22.4477 30 23V25C30 25.5523 30.4477 26 31 26H33C33.5523 26 34 25.5523 34 25V23C34 22.4477 33.5523 22 33 22H31Z"></path></svg>,
         title: 'Keyboard shortcuts',
     },
+    {
+        icon: <svg width="1em" height="1em" className={cx('left-icon')} viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M20.3019 6.38068C21.723 6.08373 22.9615 7.16986 23.009 8.50693C23.2751 16.0034 29.4377 22 37 22C37.8141 22 38.6105 21.9307 39.3839 21.7982C40.7019 21.5723 42 22.5655 42 24C42 33.9411 33.9411 42 24 42C14.0589 42 6 33.9411 6 24C6 15.3248 12.1351 8.0871 20.3019 6.38068ZM19.2223 10.8358C13.8426 12.7885 10 17.9473 10 24C10 31.732 16.268 38 24 38C31.06 38 36.8994 32.7742 37.8611 25.9797C37.5756 25.9932 37.2886 26 37 26C28.0237 26 20.5827 19.4301 19.2223 10.8358Z"></path></svg>,
+        title: 'Chế độ tối',
+        theme: true,
+    },
+
 ];
 
 function Header() {
@@ -123,7 +129,12 @@ function Header() {
         <div className={cx('wrapper')}>
             <div className={cx('content')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="logo" />
+                    <div className={cx('logo-light')}>
+                        <img src={images.logo} alt="logo" />
+                    </div>
+                    <div className={cx('logo-dark')}>
+                        <img src={images.logoDark} alt="logo" />
+                    </div>
                 </div>
                 <HeadlessTippy
                     visible={(searchResult.length > 0) && visible}
@@ -133,7 +144,6 @@ function Header() {
 
                             <div {...attrs} className={cx('search-results')} tabIndex="-1">
                                 <WrapperPopper>
-                                    <h4 className={cx('search-title')}>Search Result</h4>
                                     {searchResult.map((item, key) => {
                                         return (
                                             <SearchItem key={key} result={item.result} />

@@ -5,7 +5,7 @@
     cursor: pointer;
 
     &:hover {
-        background: rgba(22, 24, 35, 0.03);
+        background: var(--tux-colorBGView);
     }
 }
 
@@ -28,6 +28,7 @@
     text-overflow: ellipsis;
     font-weight: 600;
     white-space: nowrap;
+    color: var(--tux-colorTextPrimary);
 }
 
 .check {
@@ -39,7 +40,7 @@
 .username {
     font-size: 14px;
     line-height: 10px;
-    color: rgba(22, 24, 35, 0.5);
+    color: var(--tux-colorTextTertiary);
     font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
