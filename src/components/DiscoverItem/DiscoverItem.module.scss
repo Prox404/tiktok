@@ -6,18 +6,28 @@
     height: 24px;
     margin-bottom: 12px;
     padding: 3px 10px;
-    border: 1px solid rgba(22, 24, 35, 0.2);
+    border: 1px solid var(--tux-colorLineSecondary2);
     border-radius: 12px;
-    background: rgb(255, 255, 255);
+    background: var(--tux-colorBGSecondary2);
+    color: var(--tux-colorTextPrimary);
     transition: background 200ms ease-in-out 0s;
+    cursor: pointer;
     margin-right: 8px;
+
+    &:hover {
+        background: var(--tux-colorBGView);
+    }
+
+    svg {
+        fill: var(--tux-colorTextPrimary);
+    }
 }
 
 .p-text {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    color: rgba(22, 24, 35, 0.75);
+    color: var(--tux-colorTextSecondary);
     font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
     font-weight: 400;
     font-size: 14px;

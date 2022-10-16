@@ -70,6 +70,44 @@
     --tux-colorLineDarker: rgba(22, 24, 35, 0.12);
     --tux-colorSDSecondary: rgba(0, 0, 0, 0.5);
     --tux-colorSDTertiary: rgba(0, 0, 0, 0.2);
+    --tux-popperBackground: rgb(255, 255, 255);
+    --tux-scrollbar: rgba(22, 24, 35, 0.06);
+}
+
+[data-theme='dark']:root {
+    --tux-colorPrimary: rgba(255, 59, 92, 1);
+    --tux-colorLink: rgba(255, 59, 92, 1);
+    --tux-colorPrimary2: rgba(255, 255, 255, 0.9);
+    --tux-colorTextPrimary: rgba(255, 255, 255, 0.9);
+    --tux-colorTextSecondary: rgba(255, 255, 255, 0.75);
+    --tux-colorTextTertiary: rgba(255, 255, 255, 0.5);
+    --tux-colorTextQuaternary: rgba(255, 255, 255, 0.34);
+    --tux-colorBGPrimary: rgba(18, 18, 18, 1);
+    --tux-colorBGSecondary: rgba(37, 37, 37, 1);
+    --tux-colorBGTertiary: rgba(46, 46, 46, 1);
+    --tux-colorBGQuaternary: rgba(56, 56, 56, 1);
+    --tux-colorBGQuinary: rgba(75, 75, 75, 1);
+    --tux-colorBGSecondary2: rgba(255, 255, 255, 0.08);
+    --tux-colorBGTertiary2: rgba(255, 255, 255, 0.12);
+    --tux-colorBGPlaceholderDefault: rgba(255, 255, 255, 0.08);
+    --tux-colorBGPlaceholderOpaque: rgba(37, 37, 37, 1);
+    --tux-colorBGInput: rgba(255, 255, 255, 0.12);
+    --tux-colorBGInput2: rgba(255, 255, 255, 0.08);
+    --tux-colorBGView: rgba(255, 255, 255, 0.04);
+    --tux-colorBGCreation3: rgba(18, 18, 18, 1);
+    --tux-colorBGCreation4: rgba(27, 27, 27, 1);
+    --tux-colorBGBrand: rgba(254, 44, 85, 0.34);
+    --tux-colorLinePrimary: rgba(255, 255, 255, 0);
+    --tux-colorLineSecondary: rgba(255, 255, 255, 0.12);
+    --tux-colorLineInput: rgba(255, 255, 255, 0.5);
+    --tux-colorLinePrimary2: rgba(255, 255, 255, 0.2);
+    --tux-colorLineSecondary2: rgba(255, 255, 255, 0);
+    --tux-colorLineSecondary3: rgba(255, 255, 255, 0.5);
+    --tux-colorLineDarker: rgba(0, 0, 0, 0.6);
+    --tux-colorSDSecondary: rgba(0, 0, 0, 0.68);
+    --tux-colorSDTertiary: rgba(0, 0, 0, 0.5);
+    --tux-popperBackground: rgb(37, 37, 37);
+    --tux-scrollbar: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -87,6 +125,7 @@ body {
     font-size: 1.6rem;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+    background-color: var(--tux-colorBGPrimary);
     color: var(--tux-colorTextPrimary);
 
     .tippy-box {

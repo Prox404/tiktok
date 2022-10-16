@@ -4,7 +4,7 @@
     flex-direction: column;
     max-height: min((100vh - 96px), 734px);
     min-height: 100px;
-    background: white;
+    background: var(--tux-popperBackground);
     box-shadow: rgb(0 0 0 /12%) 0px 2px 12px;
     border-radius: 8px;
     padding-top: 8px;

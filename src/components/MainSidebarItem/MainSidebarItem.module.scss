@@ -21,7 +21,7 @@
     line-height: normal;
 
     &:hover {
-        background: rgba(22, 24, 35, 0.03);
+        background: var(--tux-colorBGView);
     }
 }
 .main-bar-icon {
