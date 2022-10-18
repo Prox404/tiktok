@@ -1,20 +1,16 @@
-import { useState } from "react";
+
 import classNames from "classnames/bind";
 import clsx from "clsx";
-import { IoIosCloseCircle } from "react-icons/io";
-// import { RiLoader4Fill } from "react-icons/ri";
-import { BiSearch } from "react-icons/bi";
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 import images from "~/assets/images";
-import { Wrapper as WrapperPopper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
-import SearchItem from '~/components/SearchItem';
+
 import Button from '~/components/Button';
+import Image from "~/components/Image";
 import Menu from '~/components/Popper/Menu';
+import Search from "~/components/Layout/components/Search";
 
 
 const cx = classNames.bind(styles);
@@ -60,25 +56,13 @@ function Header() {
 
     // const [searchResult, setSearchResult] = useState([]);
 
-    const [visible, setVisible] = useState(false);
 
-    const handleSearch = () => {
-        setVisible(!visible);
-    }
+
+
 
     console.log('re - render');
 
-    const searchResult = [
-        {
-            result: 'test'
-        },
-        {
-            result: 'test2'
-        },
-        {
-            result: 'test3'
-        }
-    ];
+
 
     const currentUser = {
         name: 'Prox',
@@ -108,7 +92,7 @@ function Header() {
         },
         {
             icon: <svg width="1em" height="1em" className={cx('left-icon')} viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M8 10C5.23858 10 3 12.2386 3 15V33C3 35.7614 5.23858 38 8 38H30C32.7614 38 35 35.7614 35 33V27.2763L43.2879 33.5909C43.8927 34.0516 44.7064 34.1297 45.3876 33.7922C46.0689 33.4548 46.5 32.7603 46.5 32V16C46.5 15.2397 46.0689 14.5452 45.3876 14.2078C44.7063 13.8704 43.8927 13.9484 43.2879 14.4092L35 20.7238V15C35 12.2386 32.7614 10 30 10H8ZM7 15C7 14.4477 7.44772 14 8 14H30C30.5523 14 31 14.4477 31 15V33C31 33.5523 30.5523 34 30 34H8C7.44771 34 7 33.5523 7 33V15ZM42.5 27.9619L37.3001 24.0001L42.5 20.0382V27.9619Z"></path><path fillRule="evenodd" clipRule="evenodd" d="M23.7392 23.5425C24.0881 23.7891 24.0867 24.2714 23.7365 24.5164L16.0777 29.8728C15.6364 30.1814 15 29.8934 15 29.3849V18.6151C15 18.1052 15.6396 17.8175 16.0804 18.1291L23.7392 23.5425Z"></path></svg>,
-            title: 'Settings',
+            title: 'LIVE Studio',
             to: '/settings',
         },
         {
@@ -128,6 +112,7 @@ function Header() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('content')}>
+                {/* logo */}
                 <div className={cx('logo')}>
                     <div className={cx('logo-light')}>
                         <img src={images.logo} alt="logo" />
@@ -136,54 +121,10 @@ function Header() {
                         <img src={images.logoDark} alt="logo" />
                     </div>
                 </div>
-                <HeadlessTippy
-                    visible={(searchResult.length > 0) && visible}
-                    interactive={true}
-                    render={
-                        attrs => (
 
-                            <div {...attrs} className={cx('search-results')} tabIndex="-1">
-                                <WrapperPopper>
-                                    {searchResult.map((item, key) => {
-                                        return (
-                                            <SearchItem key={key} result={item.result} />
-                                        )
-                                    }
-                                    )}
-                                    <h4 className={cx('search-title')}>Accounts</h4>
-                                    <AccountItem avatar="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/97387265_911934715945271_6195268394929881088_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=athQpXE4orYAX_LBNE3&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ctKotLK6YdcRCBra2xXCQ-9yaLbzs59v8k8Vq0n0vmw&oe=636DDF5A"
-                                        name="Prox"
-                                        username="prox404" />
-                                    <AccountItem avatar="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/97387265_911934715945271_6195268394929881088_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=athQpXE4orYAX_LBNE3&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ctKotLK6YdcRCBra2xXCQ-9yaLbzs59v8k8Vq0n0vmw&oe=636DDF5A"
-                                        name="Prox01"
-                                        username="prox404" />
-                                    <AccountItem avatar="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/97387265_911934715945271_6195268394929881088_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=athQpXE4orYAX_LBNE3&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ctKotLK6YdcRCBra2xXCQ-9yaLbzs59v8k8Vq0n0vmw&oe=636DDF5A"
-                                        name="Prox02"
-                                        username="prox404" />
-                                    <div className={cx('last-item')}>
-                                        <p className={cx('last-item-title')}>
-                                            Xem tất cả kết quả dành cho ""
-                                        </p>
-                                    </div>
-                                </WrapperPopper>
-                            </div>
-
-                        )
-                    }>
-                    <div className={cx('search')} >
-                        <input type="text" placeholder="Search" spellCheck={false} />
-                        <button type="button" className={cx('search-action')}>
-                            {/* <RiLoader4Fill className={cx('loading')} /> */}
-                            <IoIosCloseCircle className={cx('clear')} />
-                        </button>
-                        {/* loading */}
-                        <button className={cx('search-btn')} onClick={() => handleSearch()}>
-                            <BiSearch />
-                        </button>
-                    </div>
-                </HeadlessTippy>
-
-
+                {/* search */}
+                <Search />
+                {/* menu */}
                 <div className={cx('actions')}>
                     <Button outline leftIcon={<svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M8 2.5C7.58579 2.5 7.25 2.83579 7.25 3.25V7.25H3.25C2.83579 7.25 2.5 7.58579 2.5 8C2.5 8.41421 2.83579 8.75 3.25 8.75H7.25V12.75C7.25 13.1642 7.58579 13.5 8 13.5C8.41421 13.5 8.75 13.1642 8.75 12.75V8.75H12.75C13.1642 8.75 13.5 8.41421 13.5 8C13.5 7.58579 13.1642 7.25 12.75 7.25H8.75V3.25C8.75 2.83579 8.41421 2.5 8 2.5Z"></path></svg>}>Upload</Button>
                     {currentUser ? (
@@ -204,7 +145,7 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src={currentUser.avatar}
                                 alt={currentUser.name}

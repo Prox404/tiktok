@@ -4,11 +4,16 @@ import Home from "~/pages/Home";
 import Following from "~/pages/Following";
 import Upload from "~/pages/Upload";
 import Feedback from "~/pages/Feedback";
+import Profile from "~/pages/Profile";
 
 const publicRoutes = [
     {
         path: "/",
         component: Home
+    },
+    {
+        path: '/@:nickname',
+        component: Profile
     },
     {
         path: "/following",
@@ -24,6 +29,7 @@ const publicRoutes = [
         component: Feedback,
         layout: HeaderOnly
     }
+
 ];
 
 const privateRoutes = [

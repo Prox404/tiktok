@@ -210,3 +210,39 @@
     margin-right: 6px;
     margin-top: 5px;
 }
+
+@media screen and (max-width: 1071px) {
+    .wrapper {
+        padding: 0 8px;
+        width: 72px;
+        -webkit-flex: 0 0 72px;
+        -ms-flex: 0 0 72px;
+        flex: 0 0 72px;
+        border-right: 1px solid rgba(22, 24, 35, 0.12);
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .frame-container {
+        display: none;
+    }
+
+    .login-container {
+        display: none;
+    }
+
+    .discover-container {
+        display: none;
+    }
+
+    .footer-container {
+        display: none;
+    }
+
+    .p-title {
+        display: none;
+    }
+
+    .show-more-text-container {
+        display: none;
+    }
+}
