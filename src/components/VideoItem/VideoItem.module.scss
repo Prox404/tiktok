@@ -1,0 +1,208 @@
+.wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+    padding: 20px 0;
+    position: relative;
+    max-width: 692px;
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+}
+
+.content-container {
+    margin-left: 12px;
+    width: 624px;
+    -webkit-flex: 1 1 624px;
+    -ms-flex: 1 1 624px;
+    flex: 1 1 624px;
+}
+
+.text-info-container {
+    margin-right: 114px;
+}
+
+.author-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.author-anchor {
+    display: block;
+}
+
+.author-name {
+    font-family: 'IBM Plex Sans', SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.author-nickname {
+    font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: inline-block;
+    line-height: 28px;
+}
+
+.follow-btn {
+    cursor: pointer;
+    box-sizing: border-box;
+    right: 28px;
+    position: absolute;
+    top: 28px;
+    min-width: 88px;
+    padding: 2px 10px;
+}
+
+.description-container {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.music-svg {
+    color: var(--tux-colorTextPrimary);
+    margin-right: 5px;
+}
+
+.music-name {
+    font-weight: 600;
+}
+
+.text-description {
+    font-weight: 400;
+}
+
+.video-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.video-card-container {
+    position: relative;
+    box-sizing: border-box;
+    background: black center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 20px;
+    height: calc(450px + (100vw - 768px) / 1152 * 100);
+    width: 259px;
+}
+
+.video-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.action-btn {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: fit-content;
+}
+
+.span-icon {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    font-size: 0px;
+    border-radius: 50%;
+    -webkit-transition: all ease-in-out 200ms;
+    transition: all ease-in-out 200ms;
+    background-color: var(--tux-colorBGInput);
+    margin-top: 8px;
+    margin-bottom: 6px;
+
+    svg {
+        color: var(--tux-colorTextPrimary);
+    }
+}
+
+.strong-text {
+    color: var(--tux-colorTextSecondary);
+    font-size: 12px;
+    line-height: 17px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1071px) {
+    .wrapper {
+        width: 592px;
+        max-width: 592px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .wrapper {
+        width: calc(100vw - 32px - 68px);
+    }
+}
+
+@media screen and (max-width: 1919px) {
+    .video-card-container {
+        height: calc(450px + (100vw - 768px) / 1152 * 100);
+    }
+}

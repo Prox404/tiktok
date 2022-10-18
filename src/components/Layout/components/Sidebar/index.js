@@ -5,9 +5,29 @@ import Button from "~/components/Button";
 import AccountItem from '~/components/AccountItem';
 import DiscoverItem from '~/components/DiscoverItem';
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Sidebar() {
     let cx = classNames.bind(styles);
+
+    const [page, setPage] = useState(1);
+    const [suggested, setSuggested] = useState([]);
+
+    useEffect(() => {
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/suggested?page=${encodeURIComponent(page)}`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSuggested(res.data);
+            })
+            .catch(() => {
+                throw new Error('Error');
+            });
+
+    }, [page]);
+
+    const handleSeeMore = () => {
+        setPage(page + 1);
+    }
 
     return (
         <aside className={cx('wrapper')}>
@@ -40,21 +60,14 @@ function Sidebar() {
                 <p className={cx('p-title')}>
                     Tài khoản được đề xuất
                 </p>
-                <AccountItem avatar="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/97387265_911934715945271_6195268394929881088_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=athQpXE4orYAX_LBNE3&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ctKotLK6YdcRCBra2xXCQ-9yaLbzs59v8k8Vq0n0vmw&oe=636DDF5A"
-                    name="Prox"
-                    username="prox404" />
-                <AccountItem avatar="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/97387265_911934715945271_6195268394929881088_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=athQpXE4orYAX_LBNE3&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ctKotLK6YdcRCBra2xXCQ-9yaLbzs59v8k8Vq0n0vmw&oe=636DDF5A"
-                    name="Prox"
-                    username="prox404" />
-                <AccountItem avatar="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/97387265_911934715945271_6195268394929881088_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=athQpXE4orYAX_LBNE3&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ctKotLK6YdcRCBra2xXCQ-9yaLbzs59v8k8Vq0n0vmw&oe=636DDF5A"
-                    name="Prox"
-                    username="prox404" />
-                <AccountItem avatar="https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/97387265_911934715945271_6195268394929881088_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=athQpXE4orYAX_LBNE3&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ctKotLK6YdcRCBra2xXCQ-9yaLbzs59v8k8Vq0n0vmw&oe=636DDF5A"
-                    name="Prox"
-                    username="prox404" />
+                {
+                    suggested && suggested.map((account, index) => {
+                        return <AccountItem key={index} data={account} notShowInformation />
+                    })
+                }
 
                 <div className={cx('show-more-text-container')}>
-                    <p className={cx('show-more-text')}>
+                    <p className={cx('show-more-text')} onClick={handleSeeMore}>
                         Xem tất cả
                     </p>
                 </div>
