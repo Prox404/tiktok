@@ -11,7 +11,7 @@ let cx = classNames.bind(styles);
 function VideoItem({ data }) {
     return (
         <div className={cx('wrapper')}>
-            <Link to={`sada`}>
+            <Link to={`/@${data.user.nickname}`}>
                 <Image className={cx('avatar')}
                     src={data.user.avatar} />
             </Link>
@@ -46,7 +46,11 @@ function VideoItem({ data }) {
                             <video className={cx('video-card')}
                                 src={data.file_url}
                                 width="56.25" height="100"
-                                controls loop />
+                                controls
+                                loop
+                                autoPlay
+                                playsInline
+                            />
                         </div>
                     </div>
                     <div className={cx('actions-container')}>

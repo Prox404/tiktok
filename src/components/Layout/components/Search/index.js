@@ -4,6 +4,8 @@ import { BiSearch } from "react-icons/bi";
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useState, useRef, useEffect } from "react";
 
+import * as searchServices from '~/services/searchServices';
+import { useDebounce } from '~/hooks';
 import { Wrapper as WrapperPopper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import classNames from "classnames/bind";
@@ -18,30 +20,29 @@ function Search() {
     const [visible, setVisible] = useState(true);
     const [loading, setLoading] = useState(false);
     const searchRef = useRef(null);
+    const debounced = useDebounce(searchValue, 500);
 
     const handleSearch = () => {
 
     }
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
 
-        setLoading(true);
+        const fetchApi = async () => {
+            setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+            const result = await searchServices.search(debounced);
 
-    }, [searchValue]);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        fetchApi();
+
+    }, [debounced]);
 
     // console.log(searchResult);
 

@@ -6,7 +6,6 @@ import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
 import images from "~/assets/images";
-
 import Button from '~/components/Button';
 import Image from "~/components/Image";
 import Menu from '~/components/Popper/Menu';
@@ -55,14 +54,7 @@ const MENU_ITEMS = [
 function Header() {
 
     // const [searchResult, setSearchResult] = useState([]);
-
-
-
-
-
     console.log('re - render');
-
-
 
     const currentUser = {
         name: 'Prox',
