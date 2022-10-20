@@ -92,4 +92,107 @@
     font-size: 2rem;
     margin-left: 16px;
     background-color: transparent;
+    color: var(--tux-colorTextPrimary);
+}
+
+// modal
+
+.close-btn {
+    position: absolute;
+    top: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    z-index: 1;
+    right: 24px;
+    width: 24px;
+    height: 24px;
+    background: var(--tux-colorBGView);
+    transform: scale(1.5);
+}
+
+.close-svg {
+    color: var(--tux-colorTextPrimary);
+}
+
+.modal-content {
+    width: 483px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container {
+    width: 375px;
+    margin: auto;
+    padding: unset;
+}
+
+.title-container {
+    color: var(--tux-colorTextPrimary);
+    font-family: 'IBM Plex Sans', SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+    font-size: 32px;
+    margin: 16px auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.a-link {
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.box-container {
+    color: var(--tux-colorTextPrimary);
+    font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 600;
+    border: 1px solid var(--tux-colorLineSecondary);
+    font-size: 15px;
+    padding: 0px 12px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 44px;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 16px;
+    word-break: keep-all;
+    white-space: nowrap;
+    background: var(--tux-colorBGPrimary);
+}
+
+.icon-container {
+    font-size: 20px;
+    position: absolute;
+    display: flex;
+    left: 12px;
+}
+
+.footer-container {
+    color: var(--tux-colorTextPrimary);
+    font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    height: 64px;
+    border-top: 1px solid var(--tux-colorLineSecondary);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.span-link-text {
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: var(--tux-colorLink);
 }
