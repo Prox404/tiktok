@@ -11,9 +11,10 @@ import Image from "~/components/Image";
 import Menu from '~/components/Popper/Menu';
 import Search from "~/components/Layout/components/Search";
 import CustomModal from '~/components/Modal';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { useState, useCallback } from "react";
+import Login from "~/components/Login";
 
 
 const cx = classNames.bind(styles);
@@ -71,11 +72,8 @@ function Header() {
 
     console.log('re - render');
 
-    const currentUser = false;
-    // const currentUser = {
-    //     name: 'Prox',
-    //     avatar: 'https://scontent.fdad1-3.fna.fbcdn.net/v/t1.6435-9/97387265_911934715945271_6195268394929881088_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=athQpXE4orYAX_LBNE3&_nc_ht=scontent.fdad1-3.fna&oh=00_AT_ctKotLK6YdcRCBra2xXCQ-9yaLbzs59v8k8Vq0n0vmw&oe=636DDF5A',
-    // };
+    // const currentUser = false;
+    const currentUser = localStorage.getItem('user') ? localStorage.getItem('user') : undefined;
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -135,7 +133,10 @@ function Header() {
                 {/* menu */}
                 <div className={cx('actions')}>
                     <Button outline leftIcon={<svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M8 2.5C7.58579 2.5 7.25 2.83579 7.25 3.25V7.25H3.25C2.83579 7.25 2.5 7.58579 2.5 8C2.5 8.41421 2.83579 8.75 3.25 8.75H7.25V12.75C7.25 13.1642 7.58579 13.5 8 13.5C8.41421 13.5 8.75 13.1642 8.75 12.75V8.75H12.75C13.1642 8.75 13.5 8.41421 13.5 8C13.5 7.58579 13.1642 7.25 12.75 7.25H8.75V3.25C8.75 2.83579 8.41421 2.5 8 2.5Z"></path></svg>}>Upload</Button>
-                    {currentUser ? (
+                    {currentUser === undefined ? (
+
+                        <Button primary onClick={openModal}>Log in</Button>
+                    ) : (
                         <>
                             <Tippy delay={[0, 200]} content="Tin nhắn" placement="bottom">
                                 <button className={clsx(cx('action-btn'), cx('first-button'))}>
@@ -148,20 +149,19 @@ function Header() {
                                 </button>
                             </Tippy>
                         </>
-                    ) : (
-                        <Button primary onClick={openModal}>Log in</Button>
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
-                        {currentUser ? (
+                        {currentUser === undefined ? (
+                            <button className={cx('more-btn')}>
+                                <svg width="20px" height="20px" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M24 4C26.2091 4 28 5.79086 28 8C28 10.2091 26.2091 12 24 12C21.7909 12 20 10.2091 20 8C20 5.79086 21.7909 4 24 4ZM24 20C26.2091 20 28 21.7909 28 24C28 26.2091 26.2091 28 24 28C21.7909 28 20 26.2091 20 24C20 21.7909 21.7909 20 24 20ZM24 36C26.2091 36 28 37.7909 28 40C28 42.2091 26.2091 44 24 44C21.7909 44 20 42.2091 20 40C20 37.7909 21.7909 36 24 36Z"></path></svg>
+                            </button>
+                        ) : (
                             <Image
                                 className={cx('user-avatar')}
                                 src={currentUser.avatar}
                                 alt={currentUser.name}
                             />
-                        ) : (
-                            <button className={cx('more-btn')}>
-                                <svg width="20px" height="20px" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M24 4C26.2091 4 28 5.79086 28 8C28 10.2091 26.2091 12 24 12C21.7909 12 20 10.2091 20 8C20 5.79086 21.7909 4 24 4ZM24 20C26.2091 20 28 21.7909 28 24C28 26.2091 26.2091 28 24 28C21.7909 28 20 26.2091 20 24C20 21.7909 21.7909 20 24 20ZM24 36C26.2091 36 28 37.7909 28 40C28 42.2091 26.2091 44 24 44C21.7909 44 20 42.2091 20 40C20 37.7909 21.7909 36 24 36Z"></path></svg>
-                            </button>
+
                         )}
                     </Menu>
                 </div>
@@ -175,31 +175,8 @@ function Header() {
                 <button className={cx('close-btn')} onClick={closeModal}>
                     <svg className={cx('close-svg')} width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M21.1718 23.9999L10.2931 13.1212C9.90261 12.7307 9.90261 12.0975 10.2931 11.707L11.7074 10.2928C12.0979 9.90228 12.731 9.90228 13.1216 10.2928L24.0002 21.1715L34.8789 10.2928C35.2694 9.90228 35.9026 9.90228 36.2931 10.2928L37.7073 11.707C38.0979 12.0975 38.0979 12.7307 37.7073 13.1212L26.8287 23.9999L37.7073 34.8786C38.0979 35.2691 38.0979 35.9023 37.7073 36.2928L36.2931 37.707C35.9026 38.0975 35.2694 38.0975 34.8789 37.707L24.0002 26.8283L13.1216 37.707C12.731 38.0975 12.0979 38.0975 11.7074 37.707L10.2931 36.2928C9.90261 35.9023 9.90261 35.2691 10.2931 34.8786L21.1718 23.9999Z"></path></svg>
                 </button>
-                <div
-                    className={cx('modal-content')}
-                >
-                    <div className={cx('login-container')}>
-                        <div className={cx('title-container')}>
-                            Đăng nhập vào TikTok
-                        </div>
-                        <Link
-                            className={cx('a-link')}
-                            to="/login/qrcode"
-                        >
-                            <div className={cx('box-container')}>
-                                <div className={cx('icon-container')}>
-                                    <svg width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M8 6C6.89543 6 6 6.89543 6 8V21C6 22.1046 6.89543 23 8 23H21C22.1046 23 23 22.1046 23 21V8C23 6.89543 22.1046 6 21 6H8ZM10 19V10H19V19H10ZM28 6C26.8954 6 26 6.89543 26 8V21C26 22.1046 26.8954 23 28 23H41C42.1046 23 43 22.1046 43 21V8C43 6.89543 42.1046 6 41 6H28ZM30 19V10H39V19H30ZM8 26C6.89543 26 6 26.8954 6 28V41C6 42.1046 6.89543 43 8 43H21C22.1046 43 23 42.1046 23 41V28C23 26.8954 22.1046 26 21 26H8ZM10 39V30H19V39H10ZM26 42C26 42.5523 26.4477 43 27 43H29C29.5523 43 30 42.5523 30 42V27C30 26.4477 29.5523 26 29 26H27C26.4477 26 26 26.4477 26 27V42ZM32.5 42C32.5 42.5523 32.9477 43 33.5 43H35.5C36.0523 43 36.5 42.5523 36.5 42V27C36.5 26.4477 36.0523 26 35.5 26H33.5C32.9477 26 32.5 26.4477 32.5 27V42ZM40 43C39.4477 43 39 42.5523 39 42V27C39 26.4477 39.4477 26 40 26H42C42.5523 26 43 26.4477 43 27V42C43 42.5523 42.5523 43 42 43H40Z"></path></svg>
-                                </div>
-                                Sử dụng mã QR
-                            </div>
-                        </Link>
-                    </div>
-                    <div className={cx('footer-container')}>
-                        <div> Bạn Không có tài khoản ?</div>
-                        <Link to="/signup">
-                            <span className={cx('span-link-text')}>Đăng ký</span>
-                        </Link>
-                    </div>
+                <div className={cx('modal-content')}>
+                    <Login />
                 </div>
             </CustomModal>
         </div >
