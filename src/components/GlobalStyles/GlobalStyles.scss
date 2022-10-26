@@ -156,6 +156,21 @@ input,
     border: none;
 }
 
+.form-control {
+    border-radius: 2px;
+    background-color: var(--tux-colorBGInput);
+    border: 1px solid var(--tux-colorLineSecondary);
+    padding-inline-start: 12px;
+    color: var(--tux-colorTextPrimary);
+    line-height: 100%;
+    outline: none;
+    font-size: 16px;
+    height: 44px;
+    caret-color: rgb(254, 44, 85);
+    width: 100%;
+    padding-inline-end: unset;
+}
+
 a[href] {
     color: var(--tux-colorTextPrimary);
     text-decoration: none;
