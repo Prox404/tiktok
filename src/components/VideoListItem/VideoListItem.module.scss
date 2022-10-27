@@ -1,0 +1,80 @@
+.video-list-item-container {
+    border-radius: 4px;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.video-container-div {
+    padding-top: 132.653%;
+}
+
+.video-wrapper {
+    position: absolute;
+    inset: 0px;
+}
+
+.player-container {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.player-header {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(22, 24, 35, 0.06);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.player-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    height: 100px;
+    background: linear-gradient(rgba(22, 24, 35, 0) 2.92%, rgba(22, 24, 35, 0.5) 98.99%);
+    padding: 67px 13px 17px;
+}
+
+.play-svg {
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.strong-view-count {
+    color: var(--white);
+    font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 600;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.video-description {
+    font-family: 'IBM Plex Sans', ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 400;
+    padding: 2px 4px 0px;
+    height: 28px;
+    overflow: hidden;
+    box-sizing: content-box;
+    text-overflow: ellipsis;
+}
+
+.video-description-text {
+    display: block;
+    margin-top: 4px;
+}

@@ -24,4 +24,13 @@ export const del = async (path, options = {}) => {
     return response.data;
 };
 
+request.interceptors.request.use(function (config) {
+    const token =
+        "Bearer " + JSON.parse(localStorage.getItem("token"))?.token;
+    if (token) {
+        config.headers.Authorization = token;
+    }
+    return config;
+});
+
 export default request;
