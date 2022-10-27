@@ -73,7 +73,7 @@ function Header() {
     console.log('re - render');
 
     // const currentUser = false;
-    const currentUser = localStorage.getItem('user') ? localStorage.getItem('user') : undefined;
+    const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : undefined;
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
