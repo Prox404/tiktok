@@ -1,0 +1,246 @@
+.upload-wrapper {
+    background-color: var(--tux-colorBGCreation3);
+    margin: 0px auto;
+    width: 100%;
+    height: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    display: flex;
+    min-height: 100vh;
+    margin-top: 60px;
+    justify-content: space-between;
+}
+
+.upload-container {
+    width: 1100px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    padding: 24px 56px;
+    margin: 0px auto;
+}
+
+.upload-title {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP1);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightBold);
+    color: var(--tux-colorTextPrimary);
+    display: block;
+}
+
+.upload-sub-title {
+    margin-top: 2px;
+
+    span {
+        box-sizing: border-box;
+        margin-block: 0px;
+        font-size: var(--tux-fontSizeP2);
+        line-height: 1.5;
+        font-family: var(--tux-fontFamilyParagraph);
+        font-weight: var(--tux-fontWeightRegular);
+        color: var(--tux-colorTextTertiary);
+    }
+}
+
+.upload-content {
+    display: flex;
+    margin-top: 24px;
+}
+
+.upload-content-left {
+    margin-top: 24px;
+
+    input {
+        display: none;
+    }
+}
+
+.upload-state {
+    border-radius: 8px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out 0s;
+    padding-left: 35px;
+    padding-right: 35px;
+    width: 260px;
+    height: 458px;
+    border: 2px dashed rgba(22, 24, 35, 0.2);
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    &:hover {
+        background-color: var(--tux-colorBGView);
+        border: 2px dashed var(--tux-colorPrimary);
+    }
+}
+
+.upload-svg {
+    margin-bottom: 16px;
+}
+
+.upload-state-title {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP2);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    color: var(--tux-colorTextPrimary);
+}
+.upload-state-sub-title {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP4);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightRegular);
+    color: var(--tux-colorTextSecondary);
+    margin-top: 4px;
+    margin-bottom: 24px;
+}
+
+.upload-state-notice {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP4);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightRegular);
+    color: var(--tux-colorTextTertiary);
+    text-align: center;
+}
+
+.upload-state-notice:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+.upload-btn {
+    margin-top: 24px;
+    box-sizing: border-box;
+    appearance: none;
+    min-width: 96px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    text-decoration: none;
+    cursor: pointer;
+    background-clip: padding-box;
+    width: 100%;
+    font-size: var(--tux-fontSizeP3);
+    height: 36px;
+    padding-inline: 15px;
+    color: var(--white);
+    background-color: var(--tux-colorPrimary);
+    border-color: var(--tux-colorPrimary);
+
+    &:hover {
+        background-color: var(--tux-colorPrimary-tint-8);
+        border-color: var(--tux-colorPrimary-tint-8);
+    }
+}
+
+.upload-content-right {
+    margin-left: 24px;
+    flex: 1 1 0%;
+    min-width: 0px;
+}
+
+.form-item:not(:last-child) {
+    margin-bottom: 24px;
+}
+
+.form-header {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.form-label {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP3);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    color: var(--tux-colorTextPrimary);
+    display: inline;
+}
+
+.form-count {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: rgba(22, 24, 35, 0.5);
+    white-space: pre;
+}
+
+.form-footer {
+    margin-top: 4px;
+}
+
+.form-textarea {
+    min-height: 46px;
+    height: 150px;
+    width: 100%;
+    font-family: var(--tux-fontFamilyParagraph);
+    border: 1px solid var(--tux-colorLineSecondary2);
+    outline: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    resize: none;
+}
+
+.form-input {
+    width: 100%;
+    height: 46px;
+    border: 1px solid var(--tux-colorLineSecondary2);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-size: var(--tux-fontSizeP4);
+    line-height: 1.5;
+    font-weight: var(--tux-fontWeightRegular);
+    color: var(--tux-colorTextPrimary);
+    outline: none;
+}
+
+.form-select {
+    width: 100%;
+    height: 46px;
+    border: 1px solid var(--tux-colorLineSecondary2);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-size: var(--tux-fontSizeP4);
+    line-height: 1.5;
+    font-weight: var(--tux-fontWeightRegular);
+    color: var(--tux-colorTextPrimary);
+    outline: none;
+    appearance: none;
+    background: url(https://svgshare.com/i/nkj.svg) no-repeat right 12px center;
+    background-size: 12px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
+}

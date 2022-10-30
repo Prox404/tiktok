@@ -13,6 +13,16 @@
     padding: 20px 0;
     position: relative;
     max-width: 692px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0.5px;
+        background-color: var(--tux-colorLineSecondary2);
+    }
 }
 
 .avatar {
@@ -178,6 +188,10 @@
 
     svg {
         color: var(--tux-colorTextPrimary);
+    }
+
+    .liked {
+        fill: var(--tux-colorPrimary);
     }
 }
 

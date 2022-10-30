@@ -1,18 +1,18 @@
 import * as request from '~/utils/axiosInstances';
 import { toast } from 'react-toastify';
 
-export const updateUser = async (formData) => {
+export const upload = async (formData) => {
     try {
-        const res = await request.post('auth/me?_method=PATCH', formData, {
+        const res = await request.post('video', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        toast.success('Cập nhật thông tin thành công');
+        toast.success('Upload video thành công');
         return res.data;
     } catch (error) {
         console.log(error);
-        toast.error('Cập nhật thông tin thất bại');
+        toast.error('Upload video failed');
         return undefined;
     }
 }

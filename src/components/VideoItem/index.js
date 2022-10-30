@@ -1,14 +1,46 @@
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
+import * as followUserServices from '~/services/followUserServices';
+import * as likeVideoServices from '~/services/likeVideoServices';
+import * as unLikeVideoServices from '~/services/unLikeVideoServices';
+import * as unFollowUserServices from '~/services/unFollowUserServices';
 import Image from '../Image';
 import Button from '~/components/Button';
 import styles from './VideoItem.module.scss';
 
-
 let cx = classNames.bind(styles);
 
 function VideoItem({ data }) {
+
+    const [isLiked, setIsLiked] = useState(data.isLiked ? data.isLiked : false);
+    const [followed, setFollowed] = useState(data.user.is_followed ? data.user.is_followed : false);
+
+
+    const handleFollowUser = () => {
+        followUserServices.followUser(data.user.id);
+        setFollowed(true);
+    }
+    const handleUnFollowUser = () => {
+        unFollowUserServices.unFollowUser(data.user.id);
+        setFollowed(false);
+    }
+
+    const handleLikePost = () => {
+        likeVideoServices.likePost(data.id);
+        data.is_liked = true;
+        data.likes_count += 1;
+        setIsLiked(true);
+    }
+
+    const handleUnLikePost = () => {
+        unLikeVideoServices.unLikePost(data.id);
+        data.is_liked = false;
+        data.likes_count -= 1;
+        setIsLiked(false);
+    }
+
     return (
         <div className={cx('wrapper')}>
             <Link to={`/@${data.user.nickname}`}>
@@ -27,7 +59,20 @@ function VideoItem({ data }) {
                             </h4>
                         </Link>
                     </div>
-                    <Button primaryOutline small className={cx('follow-btn')}>Follow</Button>
+                    {
+                        (followed === false && (
+                            <Button onClick={handleFollowUser} primaryOutline small className={cx('follow-btn')}>
+                                Follow
+                            </Button>
+                        )) || (
+                            <>
+                                <Button onClick={handleUnFollowUser} outline small className={cx('follow-btn')}>
+                                    Đang theo dõi
+                                </Button>
+                            </>
+                        )
+                    }
+
                     <div className={cx('description-container')}>
                         <span className={cx('text-description')}>
                             {data.description}
@@ -54,10 +99,10 @@ function VideoItem({ data }) {
                         </div>
                     </div>
                     <div className={cx('actions-container')}>
-                        <Button className={cx('action-btn')}>
+                        <Button onClick={isLiked ? handleUnLikePost : handleLikePost} className={cx('action-btn')}>
                             <span className={cx('span-icon')}>
                                 <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M7.5 2.25C10.5 2.25 12 4.25 12 4.25C12 4.25 13.5 2.25 16.5 2.25C20 2.25 22.5 4.99999 22.5 8.5C22.5 12.5 19.2311 16.0657 16.25 18.75C14.4095 20.4072 13 21.5 12 21.5C11 21.5 9.55051 20.3989 7.75 18.75C4.81949 16.0662 1.5 12.5 1.5 8.5C1.5 4.99999 4 2.25 7.5 2.25Z" fill="currentColor"></path><path fillRule="evenodd" clipRule="evenodd" d="M2.40179 12.1998C3.58902 14.6966 5.7592 16.9269 7.74989 18.75C9.5504 20.3989 10.9999 21.5 11.9999 21.5C12.9999 21.5 14.4094 20.4072 16.2499 18.75C19.231 16.0657 22.4999 12.5 22.4999 8.49997C22.4999 8.41258 22.4983 8.32566 22.4952 8.23923C20.5671 13.6619 13.6787 18.5 11.75 18.5C10.3127 18.5 5.61087 15.8131 2.40179 12.1998Z" fill="black" fillOpacity="0.03"></path>
+                                    <path className={isLiked ? cx('liked') : ''} fillRule="evenodd" clipRule="evenodd" d="M7.5 2.25C10.5 2.25 12 4.25 12 4.25C12 4.25 13.5 2.25 16.5 2.25C20 2.25 22.5 4.99999 22.5 8.5C22.5 12.5 19.2311 16.0657 16.25 18.75C14.4095 20.4072 13 21.5 12 21.5C11 21.5 9.55051 20.3989 7.75 18.75C4.81949 16.0662 1.5 12.5 1.5 8.5C1.5 4.99999 4 2.25 7.5 2.25Z" fill="currentColor"></path><path fillRule="evenodd" clipRule="evenodd" d="M2.40179 12.1998C3.58902 14.6966 5.7592 16.9269 7.74989 18.75C9.5504 20.3989 10.9999 21.5 11.9999 21.5C12.9999 21.5 14.4094 20.4072 16.2499 18.75C19.231 16.0657 22.4999 12.5 22.4999 8.49997C22.4999 8.41258 22.4983 8.32566 22.4952 8.23923C20.5671 13.6619 13.6787 18.5 11.75 18.5C10.3127 18.5 5.61087 15.8131 2.40179 12.1998Z" fill="black" fillOpacity="0.03"></path>
                                 </svg>
                             </span>
                             <strong className={cx('strong-text')}>

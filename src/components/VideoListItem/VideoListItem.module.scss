@@ -51,6 +51,11 @@
     padding: 67px 13px 17px;
 }
 
+.video-player {
+    width: 100%;
+    object-fit: cover;
+}
+
 .play-svg {
     margin-right: 4px;
     vertical-align: middle;

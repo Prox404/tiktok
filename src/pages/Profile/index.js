@@ -2,7 +2,6 @@ import classNames from 'classnames/bind';
 import { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -18,8 +17,6 @@ import VideoListItem from '~/components/VideoListItem';
 import CustomModal from '~/components/Modal';
 
 let cx = classNames.bind(styles);
-
-const successToast = () => toast("Cập nhật thành công !");
 
 function Profile() {
     const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : undefined;
@@ -65,10 +62,10 @@ function Profile() {
     }, []);
 
     const [avatar, setAvatar] = useState();
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [bio, setBio] = useState('');
-    const [website, setWebsite] = useState('');
+    const [firstName, setFirstName] = useState(user.first_name ? user.first_name : '');
+    const [lastName, setLastName] = useState(user.last_name ? user.last_name : '');
+    const [bio, setBio] = useState(user.bio ? user.bio : '');
+    const [website, setWebsite] = useState(user.website_url ? user.website_url : '');
 
     useEffect(() => {
         return () => {
@@ -85,20 +82,19 @@ function Profile() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('avatar', avatar);
-        formData.append('first_name', firstName);
-        formData.append('last_name', lastName);
-        formData.append('bio', bio);
-        formData.append('website_url', website);
+        avatar && formData.append('avatar', avatar);
+        formData.append('first_name', firstName ? firstName : user.first_name);
+        formData.append('last_name', lastName ? lastName : user.last_name);
+        formData.append('bio', bio ? bio : user.bio);
+        formData.append('website_url', website ? website : user.website_url);
         updateUserServices.updateUser(formData);
 
-        user.avatar = avatar.preview;
-        user.first_name = firstName;
-        user.last_name = lastName;
-        user.bio = bio;
-        user.website_url = website;
+        user.avatar = avatar ? avatar.preview : user.avatar;
+        user.first_name = firstName ? firstName : user.first_name;
+        user.last_name = lastName ? lastName : user.last_name;
+        user.bio = bio ? bio : user.bio;
+        user.website_url = website ? website : user.website_url;
 
-        successToast();
         setTimeout(() => closeModal(), 3000);
     }
 
@@ -247,20 +243,20 @@ function Profile() {
                             <div className={cx('div-label')}>
                                 Tên
                             </div>
-                            <input value={firstName} onChange={(e) => setFirstName(e.target.value)} className={clsx(cx('w50'), cx('form-control'))} placeholder={user.first_name ? user.first_name : 'Tên'}></input>
-                            <input value={lastName} onChange={(e) => setLastName(e.target.value)} className={clsx(cx('w50'), cx('form-control'))} placeholder={user.last_name ? user.last_name : 'Họ'}></input>
+                            <input value={firstName ? firstName : user.first_name} onChange={(e) => setFirstName(e.target.value)} className={clsx(cx('w50'), cx('form-control'))} placeholder={user.first_name ? user.first_name : 'Tên'}></input>
+                            <input value={lastName ? lastName : user.last_name} onChange={(e) => setLastName(e.target.value)} className={clsx(cx('w50'), cx('form-control'))} placeholder={user.last_name ? user.last_name : 'Họ'}></input>
                         </div>
                         <div className={cx('modal-content-item')}>
                             <div className={cx('div-label')}>
                                 Tiểu sử
                             </div>
-                            <textarea value={bio} onChange={(e) => setBio(e.target.value)} className={clsx(cx('w100'), cx('textarea'))} placeholder={user.bio ? user.bio : 'Tiểu sử'} />
+                            <textarea value={bio ? bio : user.bio} onChange={(e) => setBio(e.target.value)} className={clsx(cx('w100'), cx('textarea'))} placeholder={user.bio ? user.bio : 'Tiểu sử'} />
                         </div>
                         <div className={cx('modal-content-item')}>
                             <div className={cx('div-label')}>
                                 Link website
                             </div>
-                            <input value={website} onChange={(e) => setWebsite(e.target.value)} className={clsx(cx('w50'), cx('form-control'))} placeholder={user.website_url ? user.website_url : 'Website'}></input>
+                            <input value={website ? website : user.website_url} onChange={(e) => setWebsite(e.target.value)} className={clsx(cx('w50'), cx('form-control'))} placeholder={user.website_url ? user.website_url : 'Website'}></input>
                         </div>
                     </div>
 
@@ -274,19 +270,6 @@ function Profile() {
                     </div>
                 </div>
             </CustomModal>
-
-            <ToastContainer
-                position="top-center"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-            />
         </>
     );
 }
