@@ -25,6 +25,28 @@
     --danger: #dc3545;
     --light: #f8f9fa;
     --dark: #343a40;
+    --tux-colorPrimary-tint-4: rgba(244, 42, 82, 1);
+    --tux-colorPrimary-tint-8: rgba(234, 40, 78, 1);
+    --tux-colorPrimary-tint-12: rgba(224, 39, 75, 1);
+    --tux-colorPrimary-opacity-0: rgba(254, 44, 85, 0);
+    --tux-colorPrimary-opacity-4: rgba(254, 44, 85, 0.04);
+    --tux-colorPrimary-opacity-8: rgba(254, 44, 85, 0.08);
+    --tux-colorPrimary-opacity-12: rgba(254, 44, 85, 0.12);
+    --tux-fontWeightRegular: 400;
+    --tux-fontWeightSemibold: 600;
+    --tux-fontWeightBold: 700;
+    --tux-fontSizeH1: 96px;
+    --tux-fontSizeH2: 72px;
+    --tux-fontSizeH3: 56px;
+    --tux-fontSizeH4: 48px;
+    --tux-fontSizeH5: 32px;
+    --tux-fontSizeH6: 24px;
+    --tux-fontSizeH7: 18px;
+    --tux-fontSizeP1: 24px;
+    --tux-fontSizeP2: 18px;
+    --tux-fontSizeP3: 16px;
+    --tux-fontSizeP4: 14px;
+    --tux-fontSizeP5: 12px;
     --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
@@ -526,4 +548,8 @@ h6 {
 .col-12 {
     flex: 0 0 auto;
     width: 100%;
+}
+
+.on-top {
+    z-index: 99999;
 }

@@ -20,11 +20,13 @@ function Menu({ children, items = [], onChange = defaultFn }) {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
             const isTheme = !!item.theme;
+            const isLogout = !!item.logout
 
             return (
                 <MenuItem
                     key={index}
                     data={item}
+                    onLogout={isLogout}
                     onThemeChange={isTheme}
                     onClick={() => {
                         if (isParent) {

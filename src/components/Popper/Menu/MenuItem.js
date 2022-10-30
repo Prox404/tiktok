@@ -36,12 +36,18 @@ const toggleTheme = (e) => {
     }
 };
 
-function MenuItem({ data, onClick, onThemeChange = false }) {
+const logout = () => {
+    localStorage.clear();
+    window.location.href = '/';
+    console.log('logout');
+}
+
+function MenuItem({ data, onClick, onThemeChange = false, onLogout = false }) {
     const classes = cx('menu-item', {
         separate: data.separate,
     });
     return (
-        <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onClick}>
+        <Button className={classes} leftIcon={data.icon} to={data.to} onClick={onLogout ? logout : onClick}>
             {data.title}
             {onThemeChange &&
                 <div className={cx('toggle-theme-wrapper')}>

@@ -27,6 +27,7 @@ function VideoListItem({ videoUrl = '', videoId = 0, description = '', viewCount
                             <div className={cx('player-container')}>
                                 <div className={cx('player-header')}>
                                     <video
+                                        className={cx('video-player')}
                                         ref={videoRef}
                                         src={videoUrl}
                                         poster={thumbnail}

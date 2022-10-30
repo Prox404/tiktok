@@ -66,7 +66,7 @@ function Home() {
                     videoHeight = thisVideoEl.clientHeight,
                     videoClientRect = thisVideoEl.getBoundingClientRect().top;
 
-                if (videoClientRect <= ((windowHeight) - (videoHeight * .5)) && videoClientRect >= (0 - (videoHeight * .5))) {
+                if (videoClientRect <= ((windowHeight) - (videoHeight * .75)) && videoClientRect >= (0 - (videoHeight * .25))) {
                     thisVideoEl.play();
                 } else {
                     thisVideoEl.pause();
