@@ -1,6 +1,6 @@
-#REACT TIKTOK FAKE
+# REACT TIKTOK FAKE
 
-#FEATURE:
+# FEATURE:
 - Login
 - Logout
 - Comment
@@ -8,6 +8,6 @@
 - View Profile / Edit profile
 - View suggest video
 
-#Install:
-run `npm install`
+# Install:
+run `npm install` <br>
 run `npm start`
