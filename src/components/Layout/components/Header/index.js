@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 import clsx from "clsx";
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import styles from './Header.module.scss';
 import images from "~/assets/images";
@@ -11,11 +11,8 @@ import Button from '~/components/Button';
 import Image from "~/components/Image";
 import Menu from '~/components/Popper/Menu';
 import Search from "~/components/Layout/components/Search";
-import CustomModal from '~/components/Modal';
 // import { Link } from "react-router-dom";
 
-import { useState, useCallback } from "react";
-import Login from "~/components/Login";
 
 
 const cx = classNames.bind(styles);
@@ -59,16 +56,7 @@ const MENU_ITEMS = [
 
 
 function Header() {
-
-    const [modalIsOpen, setIsOpen] = useState(false);
-
-    const openModal = useCallback(() => {
-        setIsOpen(true);
-    }, []);
-
-    const closeModal = useCallback(() => {
-        setIsOpen(false);
-    }, []);
+    const location = useLocation();
 
 
     console.log('re - render');
@@ -137,8 +125,9 @@ function Header() {
                         <Button outline leftIcon={<svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M8 2.5C7.58579 2.5 7.25 2.83579 7.25 3.25V7.25H3.25C2.83579 7.25 2.5 7.58579 2.5 8C2.5 8.41421 2.83579 8.75 3.25 8.75H7.25V12.75C7.25 13.1642 7.58579 13.5 8 13.5C8.41421 13.5 8.75 13.1642 8.75 12.75V8.75H12.75C13.1642 8.75 13.5 8.41421 13.5 8C13.5 7.58579 13.1642 7.25 12.75 7.25H8.75V3.25C8.75 2.83579 8.41421 2.5 8 2.5Z"></path></svg>}>Upload</Button>
                     </Link>
                     {currentUser === undefined ? (
-
-                        <Button primary onClick={openModal}>Log in</Button>
+                        <Link to="/login" state={{ modal: location }}>
+                            <Button primary>Log in</Button>
+                        </Link>
                     ) : (
                         <>
                             <Tippy delay={[0, 200]} content="Tin nhắn" placement="bottom">
@@ -169,19 +158,6 @@ function Header() {
                     </Menu>
                 </div>
             </div>
-
-            {/* modal */}
-            <CustomModal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-            >
-                <button className={cx('close-btn')} onClick={closeModal}>
-                    <svg className={cx('close-svg')} width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M21.1718 23.9999L10.2931 13.1212C9.90261 12.7307 9.90261 12.0975 10.2931 11.707L11.7074 10.2928C12.0979 9.90228 12.731 9.90228 13.1216 10.2928L24.0002 21.1715L34.8789 10.2928C35.2694 9.90228 35.9026 9.90228 36.2931 10.2928L37.7073 11.707C38.0979 12.0975 38.0979 12.7307 37.7073 13.1212L26.8287 23.9999L37.7073 34.8786C38.0979 35.2691 38.0979 35.9023 37.7073 36.2928L36.2931 37.707C35.9026 38.0975 35.2694 38.0975 34.8789 37.707L24.0002 26.8283L13.1216 37.707C12.731 38.0975 12.0979 38.0975 11.7074 37.707L10.2931 36.2928C9.90261 35.9023 9.90261 35.2691 10.2931 34.8786L21.1718 23.9999Z"></path></svg>
-                </button>
-                <div className={cx('modal-content')}>
-                    <Login />
-                </div>
-            </CustomModal>
         </div >
     );
 }

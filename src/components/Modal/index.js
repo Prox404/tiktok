@@ -7,9 +7,9 @@ Modal.setAppElement('#root');
 Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.5)';
 Modal.defaultStyles.overlay.zIndex = 10000;
 
-function CustomModal({ children, ...props }) {
-    return <Modal className={cx('modal')} {...props}>
-        <div className={cx('modal-content')}>
+function CustomModal({ children, fullScreen = false, ...props }) {
+    return <Modal className={fullScreen ? cx('modal-full') : cx('modal')} {...props}>
+        <div className={fullScreen ? cx('modal-content-full') : cx('modal-content')}>
             {children}
         </div>
     </Modal>;
