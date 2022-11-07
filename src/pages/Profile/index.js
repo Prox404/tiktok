@@ -32,7 +32,7 @@ function Profile() {
         };
         getUserProfile();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [location.pathname]);
 
     const videoList = user.videos ? user.videos : [];
 

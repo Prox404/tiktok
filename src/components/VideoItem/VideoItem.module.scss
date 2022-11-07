@@ -161,6 +161,10 @@
     -ms-flex-direction: column;
     flex-direction: column;
     min-width: fit-content;
+
+    span {
+        text-align: center;
+    }
 }
 
 .span-icon {
@@ -219,4 +223,35 @@
     .video-card-container {
         height: calc(450px + (100vw - 768px) / 1152 * 100);
     }
+}
+
+.close-btn {
+    position: absolute;
+    top: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    z-index: 1;
+    left: 24px;
+    width: 24px;
+    height: 24px;
+    background: var(--tux-colorBGView);
+    transform: scale(1.5);
+}
+
+.close-svg {
+    color: var(--white);
+    opacity: 0.5;
+}
+
+.modal-content {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

@@ -1,0 +1,65 @@
+.wrapper {
+    position: fixed;
+    width: 50%;
+    height: 100px;
+    bottom: 0;
+    max-width: 50%;
+}
+
+.play,
+.pause {
+    position: absolute;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    left: 40px;
+    bottom: 25px;
+    align-items: center;
+    color: #fff;
+}
+
+.speaker {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 25px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    .icon {
+        color: #fff;
+    }
+    .volume {
+        display: none;
+        position: absolute;
+        right: 20px;
+        bottom: 35px;
+        width: 21px;
+        height: 64px;
+        cursor: initial;
+        background-color: rgba(22, 24, 35, 0.34);
+        border-radius: 32px;
+        input {
+            position: absolute;
+            bottom: 30px;
+            right: -12px;
+            transform: rotate(-90deg);
+            background-color: #fff;
+            width: 46px;
+            height: 2px;
+            border-radius: 4px;
+            &::-webkit-slider-thumb {
+                width: 12px;
+                height: 12px;
+                background-color: #fff;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+        }
+    }
+    &:hover {
+        .volume {
+            display: block;
+        }
+    }
+}

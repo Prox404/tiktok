@@ -1,13 +1,13 @@
 import * as request from '~/utils/axiosInstances';
 import { toast } from 'react-toastify';
 
-export const followUser = async (id) => {
+export const getComment = async (id) => {
     try {
-        const res = await request.post(`users/${id}/follow`, id);
+        const res = await request.get(`videos/${id}/comments`);
         return res.data;
     } catch (error) {
         console.log(error);
-        toast.error(error.response.data.message);
+        toast.error('Error while loading data. Try again later.');
         return undefined;
     }
 }

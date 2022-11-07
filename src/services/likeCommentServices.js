@@ -1,8 +1,8 @@
 import * as request from '~/utils/axiosInstances';
 
-export const likePost = async (id) => {
+export const likeComment = async (id) => {
     try {
-        const res = await request.post(`videos/${id}/like`);
+        const res = await request.post(`comments/${id}/like`);
         return res.data;
     } catch (error) {
         console.log(error);

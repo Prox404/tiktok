@@ -1,13 +1,13 @@
 import * as request from '~/utils/axiosInstances';
 import { toast } from 'react-toastify';
 
-export const followUser = async (id) => {
+export const comment = async (id, comment) => {
     try {
-        const res = await request.post(`users/${id}/follow`, id);
+        const res = await request.post(`videos/${id}/comments`, comment);
         return res.data;
     } catch (error) {
         console.log(error);
-        toast.error(error.response.data.message);
+        toast.error('Something went wrong');
         return undefined;
     }
 }
