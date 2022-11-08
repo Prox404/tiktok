@@ -42,12 +42,12 @@ function Login() {
             password
         });
         if (token.data) {
-            successToast();
             localStorage.setItem('user', JSON.stringify(token.data))
             setToken(token.meta);
+            successToast();
+            navigate(-1);
             setTimeout(() => {
-                window.location.reload(false)
-                navigate(-1);
+                window.location.reload(false);
             }, 3000);
         } else {
             errorToast();
