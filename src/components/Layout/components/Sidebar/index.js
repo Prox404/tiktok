@@ -4,7 +4,7 @@ import MainSidebarItem from "~/components/MainSidebarItem";
 import Button from "~/components/Button";
 import AccountItem from '~/components/AccountItem';
 import DiscoverItem from '~/components/DiscoverItem';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function Sidebar() {
@@ -13,6 +13,7 @@ function Sidebar() {
     const [page, setPage] = useState(1);
     const [suggested, setSuggested] = useState([]);
     const currentUser = localStorage.getItem('user') ? localStorage.getItem('user') : undefined;
+    let location = useLocation();
 
     useEffect(() => {
         fetch(`https://tiktok.fullstack.edu.vn/api/users/suggested?page=${encodeURIComponent(page)}`)
@@ -55,7 +56,7 @@ function Sidebar() {
                             Đăng nhập để follow các tác giả, thích video và xem bình luận.
                         </p>
                         <div className={cx('login-button')}>
-                            <Button primaryOutline w100 className={cx('login-button')} >
+                            <Button to="/login" state={{ modal: location }} primaryOutline w100 className={cx('login-button')} >
                                 Đăng nhập
                             </Button>
                         </div>

@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 export const upload = async (formData) => {
     try {
-        const res = await request.post('video', formData, {
+        const res = await request.post('videos', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

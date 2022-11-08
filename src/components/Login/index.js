@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,6 +17,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { setToken } = useToken();
+    const navigate = useNavigate();
 
     const errorToast = () => toast("Sai email hoặc mật khẩu !");
     const successToast = () => toast("Đăng nhập thành công !");
@@ -46,6 +47,7 @@ function Login() {
             setToken(token.meta);
             setTimeout(() => {
                 window.location.reload(false)
+                navigate(-1);
             }, 3000);
         } else {
             errorToast();
