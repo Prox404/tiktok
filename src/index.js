@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import GlobalStyles from './components/GlobalStyles';
+import ScrollButton from './components/ScrollToTop';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -28,6 +29,7 @@ root.render(
       />
       <Router>
         <App />
+        <ScrollButton />
       </Router>
     </GlobalStyles>
   </React.StrictMode>

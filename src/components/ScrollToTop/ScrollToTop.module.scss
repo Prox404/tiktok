@@ -1,0 +1,17 @@
+.button-wrapper {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    right: 20px;
+    bottom: 10px;
+    z-index: 999;
+    cursor: pointer;
+    background-color: var(--tux-colorPrimary);
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    display: flex;
+    min-width: unset;
+    justify-content: center;
+    align-items: center;
+}

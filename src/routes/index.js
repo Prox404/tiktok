@@ -5,6 +5,8 @@ import Following from "~/pages/Following";
 import Upload from "~/pages/Upload";
 import Feedback from "~/pages/Feedback";
 import Profile from "~/pages/Profile";
+import NotFound from "~/pages/NotFound";
+import VideoModal from "~/components/VideoModal";
 
 const publicRoutes = [
     {
@@ -27,6 +29,17 @@ const publicRoutes = [
     {
         path: "/feedback",
         component: Feedback,
+        layout: HeaderOnly
+    },
+    {
+        path: "/videos/:id",
+        component: VideoModal,
+        layout: HeaderOnly
+    }
+    ,
+    {
+        path: "*",
+        component: NotFound,
         layout: HeaderOnly
     }
 

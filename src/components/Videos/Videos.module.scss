@@ -385,3 +385,16 @@
     min-width: unset;
     background-color: transparent;
 }
+
+.warning-title {
+    font-size: 14px;
+    color: var(--tux-colorTextSecondary);
+    width: 100%;
+    text-align: center;
+}
+
+.login-link {
+    color: var(--tux-colorPrimary) !important;
+    font-size: 14px;
+    cursor: pointer;
+}

@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'SofiaPro';
+    src: url(../../assets/fonts/SofiaProMedium.ttf) format('truetype');
+}
+
+.wrapper {
+    padding-top: 46px;
+}
+
+.container {
+    font-family: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 500;
+    padding-top: 116px;
+    padding-bottom: 130px;
+    background: url(../../assets/images/bglight.png) center center / cover no-repeat transparent;
+    text-align: center;
+
+    [data-theme='dark'] & {
+        background: url(../../assets/images/bgdark.png) center center / cover no-repeat transparent;
+    }
+}
+
+.title {
+    font-size: 300px;
+    line-height: 244px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.smile-face {
+    width: 244px;
+    height: 244px;
+    vertical-align: middle;
+    display: inline;
+}
+
+.subtitle {
+    color: var(--tux-colorTextTertiary);
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    margin: 24px auto 0px;
+}
+
+.recommend-title {
+    font-family: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    max-width: 622px;
+    word-break: break-word;
+    margin: 40px auto 0px;
+    text-align: center;
+}
+
+.home-btn {
+    color: var(--white) !important;
+    margin-top: 24px;
+    width: 360px;
+
+    svg {
+        margin-right: 8px;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+    }
+}
