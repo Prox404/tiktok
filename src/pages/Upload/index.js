@@ -1,16 +1,26 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import images from '~/assets/images';
-import { AiOutlineCheck } from "react-icons/ai";
 
 import Button from '~/components/Button';
 import styles from './Upload.module.scss'
 import * as uploadVideoServices from '~/services/uploadVideoServices';
 import Image from '~/components/Image';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 let cx = classNames.bind(styles);
 
 function Upload() {
+
+    const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : undefined;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        currentUser ? console.log(currentUser) : navigate('/');
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
 
     const [file, setFile] = useState();
     const [description, setDescription] = useState('');
@@ -19,7 +29,6 @@ function Upload() {
     const [viewable, setViewable] = useState('public');
     const [allows, setAllows] = useState([])
 
-    const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : undefined;
 
     const handleAllowsChange = (e) => {
         const { value } = e.target;

@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState, memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useRef } from 'react';
 import clsx from 'clsx';
 
@@ -32,6 +32,9 @@ function Videos({ data }) {
     const [commentContent, setCommentContent] = useState('');
     const commentRef = useRef();
     const videoRef = useRef();
+    const currentUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : undefined;
+    const location = useLocation();
+    console.log(location);
 
     useEffect(() => {
         const loadVideo = async () => {
@@ -41,12 +44,14 @@ function Videos({ data }) {
         }
         loadVideo();
 
+
         const loadComment = async () => {
             const comment = await getCommentServices.getComment(id);
             setComment(comment);
         }
 
-        loadComment();
+        currentUser && loadComment();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     async function commentVideo(id) {
@@ -154,6 +159,11 @@ function Videos({ data }) {
         }
 
     };
+
+    const copyVideoHref = () => {
+        navigator.clipboard.writeText(`https://prox-tiktok.vercel.app/videos/${id}?share=true`);
+        toast.success('Coppy link success');
+    }
 
     // console.log(video);
     // console.log('render');
@@ -263,9 +273,9 @@ function Videos({ data }) {
                                 </div>
                                 <div className={cx('share-container')}>
                                     <p className={cx('copy-link-text')}>
-                                        {`https://www.facebook.com/Prox.Error404`}
+                                        {`https://prox-tiktok.vercel.app/video/${video._id}?share=true`}
                                     </p>
-                                    <Button className={cx('copy-btn')}>
+                                    <Button onClick={copyVideoHref} className={cx('copy-btn')}>
                                         Sao chép liên kết
                                     </Button>
                                 </div>
@@ -283,24 +293,38 @@ function Videos({ data }) {
                                 ))
                             }
                         </div>
+
                         <div className={cx('bottom-comment-container')}>
                             <div className={cx('comment-container')}>
-                                <div className={cx('layout-container')}>
-                                    <div className={cx('input-area-container')}>
-                                        <input
-                                            ref={commentRef}
-                                            value={commentContent}
-                                            onChange={e => setCommentContent(e.target.value)}
-                                            type="text" placeholder="Thêm bình luận..."
-                                            className={cx('input-area')} />
-                                    </div>
-                                </div>
+                                {
+                                    (currentUser && (
+                                        <>
+                                            <div className={cx('layout-container')}>
+                                                <div className={cx('input-area-container')}>
+                                                    <input
+                                                        ref={commentRef}
+                                                        value={commentContent}
+                                                        onChange={e => setCommentContent(e.target.value)}
+                                                        type="text" placeholder="Thêm bình luận..."
+                                                        className={cx('input-area')} />
+                                                </div>
+                                            </div>
 
-                                <Button onClick={() => commentVideo(video.id)} className={commentContent.length > 0 ? cx('post-comment-btn') : cx('post-comment-btn-disabled')}>
-                                    Đăng
-                                </Button>
+                                            <Button onClick={() => commentVideo(video.id)} className={commentContent.length > 0 ? cx('post-comment-btn') : cx('post-comment-btn-disabled')}>
+                                                Đăng
+                                            </Button>
+                                        </>
+                                    )) || (
+                                        <>
+                                            <p className={cx('warning-title')}>Bạn cần
+                                                <Link to="/login" state={{ modal: location }} className={cx('login-link')}> đăng nhập </Link>
+                                                để bình luận !</p>
+                                        </>
+                                    )
+                                }
                             </div>
                         </div>
+
                     </div>
                 </div>
             )

@@ -24,6 +24,7 @@ function App() {
           }
 
           return (
+
             <Route
               key={index}
               path={route.path}
@@ -43,6 +44,8 @@ function App() {
             />
           );
         })}
+
+        <Route path="*" element={<h1>404</h1>} />
       </Routes>
       {modal && (
         <Routes>

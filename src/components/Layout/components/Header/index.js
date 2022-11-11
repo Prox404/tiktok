@@ -109,12 +109,14 @@ function Header() {
             <div className={cx('content')}>
                 {/* logo */}
                 <div className={cx('logo')}>
-                    <div className={cx('logo-light')}>
-                        <img src={images.logo} alt="logo" />
-                    </div>
-                    <div className={cx('logo-dark')}>
-                        <img src={images.logoDark} alt="logo" />
-                    </div>
+                    <Link to="/">
+                        <div className={cx('logo-light')}>
+                            <img src={images.logo} alt="logo" />
+                        </div>
+                        <div className={cx('logo-dark')}>
+                            <img src={images.logoDark} alt="logo" />
+                        </div>
+                    </Link>
                 </div>
 
                 {/* search */}
