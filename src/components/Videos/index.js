@@ -273,7 +273,7 @@ function Videos({ data }) {
                                 </div>
                                 <div className={cx('share-container')}>
                                     <p className={cx('copy-link-text')}>
-                                        {`https://prox-tiktok.vercel.app/video/${video._id}?share=true`}
+                                        {`https://prox-tiktok.vercel.app/video/${id}?share=true`}
                                     </p>
                                     <Button onClick={copyVideoHref} className={cx('copy-btn')}>
                                         Sao chép liên kết
