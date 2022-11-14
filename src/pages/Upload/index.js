@@ -287,9 +287,9 @@ function Upload() {
                             </div>
                             <div className={cx('form-footer')}>
                                 <div className={cx('form-checkbox')}>
-                                    <input className={cx('checkbox')} onChange={handleAllowsChange} value="comment" type="checkbox" name="allows" checked /> Comment
-                                    <input className={cx('checkbox')} onChange={handleAllowsChange} value="duet" type="checkbox" name="allows" checked /> Duet
-                                    <input className={cx('checkbox')} onChange={handleAllowsChange} value="stitch" type="checkbox" name="allows" checked /> Stitch
+                                    <input className={cx('checkbox')} onChange={handleAllowsChange} value="comment" type="checkbox" name="allows" /> Comment
+                                    <input className={cx('checkbox')} onChange={handleAllowsChange} value="duet" type="checkbox" name="allows" /> Duet
+                                    <input className={cx('checkbox')} onChange={handleAllowsChange} value="stitch" type="checkbox" name="allows" /> Stitch
                                 </div>
                             </div>
                         </div>
