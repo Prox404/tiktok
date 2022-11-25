@@ -2,7 +2,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { RiLoader4Fill } from "react-icons/ri";
 import { BiSearch } from "react-icons/bi";
 import HeadlessTippy from '@tippyjs/react/headless';
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 
 import * as searchServices from '~/services/searchServices';
 import { useDebounce } from '~/hooks';
@@ -37,14 +37,16 @@ function Search() {
 
             const result = await searchServices.search(debounced);
 
+
             setSearchResult(result);
+            if (result) {
+                setVisible(true);
+            }
             setLoading(false);
         };
         fetchApi();
 
     }, [debounced]);
-
-    // console.log(searchResult);
 
     const handleClear = () => {
         setSearchValue('');
@@ -56,7 +58,6 @@ function Search() {
         setVisible(false);
     };
 
-
     return (
         <div className={cx('wrapper')}>
             <HeadlessTippy
@@ -65,7 +66,6 @@ function Search() {
                 onClickOutside={handleHideResult}
                 render={
                     attrs => (
-
                         <div {...attrs} className={cx('search-results')} tabIndex="-1">
                             <WrapperPopper>
                                 <div className={cx('search-item')}>
@@ -117,4 +117,4 @@ function Search() {
     );
 }
 
-export default Search;
+export default memo(Search);

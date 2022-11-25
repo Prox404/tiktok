@@ -49,9 +49,6 @@ function VideoItem({ data }) {
         });
     }
 
-    // console.log('render');
-    // console.log(content);
-
     return (
         <>
             {
@@ -74,11 +71,16 @@ function VideoItem({ data }) {
                                     </Link>
                                 </div>
                                 {
-                                    (followed === false && (
-                                        <Button onClick={handleFollowUser} primaryOutline small className={cx('follow-btn')}>
+                                    (currentUser &&
+                                        <Button to="/login" state={{ modal: location }} primaryOutline small className={cx('follow-btn')}>
                                             Follow
-                                        </Button>
-                                    )) || (
+                                        </Button>) || (
+                                        followed === false && (
+                                            <Button onClick={handleFollowUser} primaryOutline small className={cx('follow-btn')}>
+                                                Follow
+                                            </Button>
+                                        )
+                                    ) || (
                                         <>
                                             <Button onClick={handleUnFollowUser} outline small className={cx('follow-btn')}>
                                                 Đang theo dõi

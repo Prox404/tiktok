@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import styles from "./Login.module.scss";
@@ -19,11 +19,14 @@ function Login() {
     const { setToken } = useToken();
     const navigate = useNavigate();
 
-    const errorToast = () => toast("Sai email hoặc mật khẩu !");
+    const errorToast = () => {
+        toast.error("Sai Email hoặc mật khẩu");
+    };
     const successToast = () => toast("Đăng nhập thành công !");
 
     async function loginUser(credentials) {
-        return axios.post('https://tiktok.fullstack.edu.vn/api/auth/login',
+
+        return await axios.post('https://tiktok.fullstack.edu.vn/api/auth/login',
             credentials,
             {
                 headers: {
@@ -31,7 +34,7 @@ function Login() {
                 }
             })
             .then(data => data.data)
-            .catch(error => errorToast())
+            .catch(error => error.response.data);
     }
 
 
@@ -167,18 +170,6 @@ function Login() {
 
 
         }
-        <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-        />
     </>;
 }
 
